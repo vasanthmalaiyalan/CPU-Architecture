@@ -2,14 +2,14 @@
 buffer: .space 20
 
 .section .text
-.global _start
+.globl _start
 
 _start:
     li x1, 5
     li x2, 3
     add x3, x2, x1 # x3 = 8
 
-    mv t0,t3 # number copy
+    mv t0, x3 # number copy
     la t1, buffer # buffer address
     addi t1, t1, 19 # end of buffer
     li t2, 10 # base 10
@@ -24,7 +24,7 @@ convert:
 
     bnez t0, convert
 
-    add t1, t1, 1 # correct pointer
+    addi t1, t1, 1 # correct pointer
 
     # write syscall
     li a7, 64
