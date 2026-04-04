@@ -1,332 +1,304 @@
-சூப்பர் 🔥 இப்போ நீ **Chapter 6 – Computer Architecture (core CPU understanding)** வந்துட்டே 😎
-இந்த section (6.1 Introduction) தான் **C → Assembly → CPU execution bridge**
+சூப்பர் 🔥 இப்போ நீ வந்துட்டே இருக்குறது **Chapter 6 — Computer Architecture INTRODUCTION**
+👉 இது தான் “low-level → real computer எப்படி வேலை செய்கிறது” bridge 💯
 
-நான் இதை **very clear + real understanding**ல break பண்ணுறேன் 👇
-
----
-
-# 🧠 6.1 INTRODUCTION — Main idea
-
-👉
-
-🔥
-**“Computer எப்படி programmerக்கு தெரியும் view = Architecture”**
+நான் இதை **simple Tamil + big-picture + முக்கிய ideas மட்டும்** clear பண்ணுறேன் 😎
 
 ---
 
-# 🎯 1. Architecture என்ன?
+# 🧠 1️⃣ Architecture என்றால் என்ன?
 
-👉
+👉 Book சொல்றது:
 
-🔥 **Programmer பார்வையில் computer**
+> 👉 “Programmer’s view of a computer”
 
 ---
 
-## 🔹 இது என்ன define பண்ணும்?
+## 🧠 Meaning (simple)
 
-👉
+> 👉 “Programmer க்கு தெரியும் computer interface”
 
-✔️ instruction set (language)
-✔️ registers
-✔️ memory usage
+---
+
+## 💥 இதில் என்ன இருக்கும்?
+
+* Instructions (language)
+* Registers
+* Memory
+
+---
+
+👉 Example:
+
+* `add`, `sub`, `branch`
+
+---
+
+# 🔥 2️⃣ Instruction Set (முக்கிய concept)
+
+👉 Instruction set =
+
+> 👉 “Computer language”
+
+---
+
+## 🧠 Example instructions
+
+```asm
+add t0, t1, t2
+sub t0, t1, t2
+beq t0, t1, label
+```
+
+---
+
+👉 Tamil:
+
+> 👉 “CPU புரியும் commands”
+
+---
+
+# 💻 3️⃣ Programs எப்படி run ஆகுது?
+
+👉 Book சொல்றது:
+
+> 👉 “All software → simple instructions ஆக convert ஆகும்”
+
+---
+
+## 🔁 Flow
+
+```text
+C program
+↓
+Compiler
+↓
+Assembly
+↓
+Machine code (0 & 1)
+↓
+CPU execute
+```
+
+---
+
+# 🔢 4️⃣ Machine Language
+
+👉 CPU understand பண்ணுவது:
+
+```text
+0 மற்றும் 1 மட்டும்
+```
+
+---
+
+## 🔥 Example
+
+```text
+00000000001000000000000010110011
+```
+
+👉 இது தான் real instruction 😳
+
+---
+
+# 🧠 5️⃣ Assembly Language
+
+👉 Human-friendly version:
+
+```asm
+add t0, t1, t2
+```
+
+---
+
+👉 Tamil:
+
+> 👉 “machine codeக்கு readable form”
+
+---
+
+# ⚙️ 6️⃣ Architecture vs Hardware
+
+👉 Very important 🔥
+
+---
+
+## 🟢 Architecture
+
+> 👉 “WHAT computer does”
+
+---
+
+## 🔴 Microarchitecture
+
+> 👉 “HOW it does”
 
 ---
 
 ## 🧠 Example
 
-👉
-
-```c
-int x = a + b;
-```
-
-👉 இது CPUக்கு:
-
-👉
-
-🔥 instruction ஆக மாறும்
-
----
-
-# 🧠 2. Instruction Set (VERY IMPORTANT 🔥)
-
-👉
-
-🔥 **CPU பேசும் language**
-
----
-
-## 🔹 என்ன இருக்கும்?
-
-👉
-
-✔️ add
-✔️ sub
-✔️ load
-✔️ branch
-
----
-
-## 🔹 Example (RISC-V)
-
-```asm
-add x1, x2, x3
-```
-
-👉
-
-🔥 x2 + x3 → x1
-
----
-
-# 🧠 3. Program எப்படி run ஆகுது?
-
----
-
-## 🔹 Flow
-
-```text
-C code → Compiler → Assembly → Machine code → CPU
-```
-
----
-
-## 🔹 CPUக்கு தெரியும்:
-
-```text
-binary மட்டும் (0 & 1)
-```
-
----
-
-# 🧠 4. Machine Language
-
-👉
-
-🔥 **binary instructions**
-
----
-
-## 🔹 Example
-
-```text
-00000000001100010000000010110011
-```
-
-👉
-
-😵 மனிதனுக்கு புரியாது
-
----
-
-# 🧠 5. Assembly Language
-
-👉
-
-🔥 **human-friendly version**
-
----
-
-## 🔹 Example
-
-```asm
-add x1, x2, x3
-```
-
-👉
-
-✔️ easy to read
-✔️ CPUக்கு convert ஆகும்
-
----
-
-# 🧠 6. Architectures (VERY IMPORTANT 🔥)
-
-👉
-
-பல types:
-
-* x86
-* ARM
-* RISC-V
-* MIPS
-
----
-
-# ⚡ Important point
-
-👉
-
-🔥 எல்லாம் same concept தான்
-
-👉 difference:
-
-👉 instruction format மட்டும்
-
----
-
-# 🧠 7. Architecture vs Microarchitecture
-
----
-
-## 🔹 Architecture
-
-👉
-
-🔥 programmer view
-
----
-
-## 🔹 Microarchitecture
-
-👉
-
-🔥 internal hardware design
-
----
-
-## 🔹 Example
-
-👉
-
-same architecture:
+👉 x86:
 
 * Intel CPU
 * AMD CPU
 
-👉
-
-🔥 same program run ஆகும்
-
-👉
-
-👉 but internal design வேற
+👉 இரண்டும் same programs run பண்ணும் ✔️
 
 ---
 
-# 🧠 8. RISC-V (VERY IMPORTANT 🔥)
+# 💥 7️⃣ Different Architectures
 
-👉
+👉 Book சொல்றது:
 
-🔥 open-source architecture
-
----
-
-## 🔹 Features
-
-👉
-
-✔️ free
-✔️ simple
-✔️ modern
+* RISC-V
+* ARM
+* x86
+* MIPS
+* SPARC
 
 ---
 
-## 🔹 உருவாக்கப்பட்டது:
+👉 Tamil:
 
-👉
-
-University of California, Berkeley
+> 👉 “different dialects (language styles)”
 
 ---
 
-# 🧠 9. What you will learn
-
-👉
-
-🔥
-
-✔️ assembly instructions
-✔️ loops
-✔️ functions
-✔️ memory usage
+# 🚀 8️⃣ RISC-V (நம்ம focus)
 
 ---
 
-# 🧠 10. Key design principles (IMPORTANT 🔥)
+## 🧠 What is special?
+
+👉 Open-source 🔥
+
+👉 Free to use
 
 ---
 
-## 🔹 1. Simplicity
+## 👨‍🔬 Created by
 
-👉
-
-🔥 simple design → easy implementation
-
----
-
-## 🔹 2. Common case fast
-
-👉
-
-🔥 frequent operations fast
+* Krste Asanović
+* David Patterson
+* Andrew Waterman
 
 ---
 
-## 🔹 3. Smaller is faster
+## 🏫 Origin
 
-👉
-
-🔥 less complexity → high speed
+👉 University of California, Berkeley
 
 ---
 
-## 🔹 4. Trade-offs
+# 💥 9️⃣ Why RISC-V important?
 
-👉
+👉 Compare:
 
-🔥 balance performance / power / cost
+| Type   | Example  |
+| ------ | -------- |
+| Closed | ARM, x86 |
+| Open   | RISC-V   |
 
 ---
 
-# 🧠 Big picture
+👉 RISC-V:
+
+> 👉 “free + flexible + modern”
+
+---
+
+# 🧠 10️⃣ Instruction format
+
+👉 RISC-V:
 
 ```text
-Logic gates → circuits → CPU  
-CPU → instruction set  
-Instruction set → program execution
+32-bit instruction
 ```
 
 ---
 
-# 🎯 Final clarity
+# 🔥 11️⃣ What you will learn next
 
-👉
+👉 Book சொல்றது:
 
-🔥
-**Architecture = CPU language + programmer interface**
-
----
-
-# 🧠 One-line summary
-
-👉
-**Architecture = “CPU எப்படி program execute பண்ணுது”**
+* Assembly instructions
+* Registers
+* Memory usage
+* Branches & loops
+* Function calls
 
 ---
 
-# 🚀 Real impact (உனக்கு 🔥)
+# 🧠 12️⃣ 4 Design Principles (VERY IMPORTANT 🔥)
 
-👉
-
-🔥
-
-இதுதான்:
-
-✔️ C → assembly mapping
-✔️ exploit development
-✔️ reverse engineering
+👉 By David Patterson & John Hennessy
 
 ---
 
-நீ இப்போ **real low-level worldக்கு entry அடிச்சிட்டே 😎🔥**
+## 🟢 1. Regularity → simplicity
+
+> 👉 simple pattern = easy design
 
 ---
 
-👉 next:
+## 🟡 2. Make common case fast
 
-👉 **Registers + Instruction format (deep)**
+> 👉 frequently used operations → fast
 
 ---
 
-சொல்லு: **"register explain"** 🚀
+## 🔵 3. Smaller is faster
+
+> 👉 less complexity → more speed
+
+---
+
+## 🔴 4. Good design = compromise
+
+> 👉 speed vs cost vs power balance
+
+---
+
+# 💥 Big Picture (FINAL)
+
+👉 Architecture:
+
+```text
+Language + Registers + Memory
+```
+
+👉 CPU:
+
+```text
+instructions execute பண்ணும் machine
+```
+
+---
+
+# 🧠 One-line clarity
+
+👉 Computer Architecture:
+
+> 👉 “Programmer க்கு தெரியும் computer behavior (language + memory + registers)”
+
+---
+
+# 🔥 Ultra summary
+
+* Architecture = programmer view
+* Instruction set = language
+* Machine code = 0 & 1
+* Assembly = human readable
+* RISC-V = open architecture
+* Microarchitecture = internal design
+
+---
+
+💬 இப்போ big picture clearஆ வந்திருக்கும் 😎
+
+👉 next level வேண்டுமா?
+
+* RISC-V registers full breakdown
+* அல்லது instruction format (R-type, I-type, etc.)
+
+நான் Chapter 6 full master பண்ணிடுவேன் 🔥

@@ -1,304 +1,258 @@
-சூப்பர் 🔥 இப்போ நீ வந்துட்டே இருக்குறது **Chapter 6 — Computer Architecture INTRODUCTION**
-👉 இது தான் “low-level → real computer எப்படி வேலை செய்கிறது” bridge 💯
+சூப்பர் 🔥 இப்போ நம்ம **Assembly Language (core concept)**க்கு வந்துட்டோம் 💯
+👉 இது தான் “human ↔ CPU communication bridge” 😎
 
-நான் இதை **simple Tamil + big-picture + முக்கிய ideas மட்டும்** clear பண்ணுறேன் 😎
+நான் இதை **simple Tamil + examples + C → Assembly mapping**ல explain பண்ணுறேன்
 
 ---
 
-# 🧠 1️⃣ Architecture என்றால் என்ன?
+# 🧠 1️⃣ Assembly Language — என்ன?
 
 👉 Book சொல்றது:
 
-> 👉 “Programmer’s view of a computer”
+> 👉 “Human-readable version of machine language”
 
 ---
 
-## 🧠 Meaning (simple)
+## 🧠 Meaning
 
-> 👉 “Programmer க்கு தெரியும் computer interface”
-
----
-
-## 💥 இதில் என்ன இருக்கும்?
-
-* Instructions (language)
-* Registers
-* Memory
+> 👉 “CPU புரியும் 0/1 code-ஐ, மனிதர்களுக்கு easy ஆக எழுதுற வடிவம்”
 
 ---
 
-👉 Example:
+## 🔢 Example
 
-* `add`, `sub`, `branch`
+### Machine code ❌
 
----
-
-# 🔥 2️⃣ Instruction Set (முக்கிய concept)
-
-👉 Instruction set =
-
-> 👉 “Computer language”
-
----
-
-## 🧠 Example instructions
-
-```asm
-add t0, t1, t2
-sub t0, t1, t2
-beq t0, t1, label
-```
-
----
-
-👉 Tamil:
-
-> 👉 “CPU புரியும் commands”
-
----
-
-# 💻 3️⃣ Programs எப்படி run ஆகுது?
-
-👉 Book சொல்றது:
-
-> 👉 “All software → simple instructions ஆக convert ஆகும்”
-
----
-
-## 🔁 Flow
-
-```text
-C program
-↓
-Compiler
-↓
-Assembly
-↓
-Machine code (0 & 1)
-↓
-CPU execute
-```
-
----
-
-# 🔢 4️⃣ Machine Language
-
-👉 CPU understand பண்ணுவது:
-
-```text
-0 மற்றும் 1 மட்டும்
-```
-
----
-
-## 🔥 Example
-
-```text
+```text id="8a3lg4"
 00000000001000000000000010110011
 ```
 
-👉 இது தான் real instruction 😳
+👉 புரியுமா? 😵
 
 ---
 
-# 🧠 5️⃣ Assembly Language
+### Assembly ✔️
 
-👉 Human-friendly version:
-
-```asm
+```asm id="2zq3sv"
 add t0, t1, t2
 ```
 
----
-
-👉 Tamil:
-
-> 👉 “machine codeக்கு readable form”
+👉 easy ✔️
 
 ---
 
-# ⚙️ 6️⃣ Architecture vs Hardware
+# 🔥 2️⃣ Instruction structure
 
-👉 Very important 🔥
+👉 ஒவ்வொரு instruction:
 
----
-
-## 🟢 Architecture
-
-> 👉 “WHAT computer does”
-
----
-
-## 🔴 Microarchitecture
-
-> 👉 “HOW it does”
+```text id="v9b9se"
+Operation + Operands
+```
 
 ---
 
 ## 🧠 Example
 
-👉 x86:
+```asm id="s5ngf0"
+add t0, t1, t2
+```
 
-* Intel CPU
-* AMD CPU
+👉 Meaning:
 
-👉 இரண்டும் same programs run பண்ணும் ✔️
-
----
-
-# 💥 7️⃣ Different Architectures
-
-👉 Book சொல்றது:
-
-* RISC-V
-* ARM
-* x86
-* MIPS
-* SPARC
-
----
-
-👉 Tamil:
-
-> 👉 “different dialects (language styles)”
-
----
-
-# 🚀 8️⃣ RISC-V (நம்ம focus)
-
----
-
-## 🧠 What is special?
-
-👉 Open-source 🔥
-
-👉 Free to use
-
----
-
-## 👨‍🔬 Created by
-
-* Krste Asanović
-* David Patterson
-* Andrew Waterman
-
----
-
-## 🏫 Origin
-
-👉 University of California, Berkeley
-
----
-
-# 💥 9️⃣ Why RISC-V important?
-
-👉 Compare:
-
-| Type   | Example  |
-| ------ | -------- |
-| Closed | ARM, x86 |
-| Open   | RISC-V   |
-
----
-
-👉 RISC-V:
-
-> 👉 “free + flexible + modern”
-
----
-
-# 🧠 10️⃣ Instruction format
-
-👉 RISC-V:
-
-```text
-32-bit instruction
+```text id="ol6x5g"
+t0 = t1 + t2
 ```
 
 ---
 
-# 🔥 11️⃣ What you will learn next
-
-👉 Book சொல்றது:
-
-* Assembly instructions
-* Registers
-* Memory usage
-* Branches & loops
-* Function calls
+# 💻 3️⃣ High-level → Assembly
 
 ---
 
-# 🧠 12️⃣ 4 Design Principles (VERY IMPORTANT 🔥)
+## 🟢 C code
 
-👉 By David Patterson & John Hennessy
-
----
-
-## 🟢 1. Regularity → simplicity
-
-> 👉 simple pattern = easy design
-
----
-
-## 🟡 2. Make common case fast
-
-> 👉 frequently used operations → fast
-
----
-
-## 🔵 3. Smaller is faster
-
-> 👉 less complexity → more speed
-
----
-
-## 🔴 4. Good design = compromise
-
-> 👉 speed vs cost vs power balance
-
----
-
-# 💥 Big Picture (FINAL)
-
-👉 Architecture:
-
-```text
-Language + Registers + Memory
-```
-
-👉 CPU:
-
-```text
-instructions execute பண்ணும் machine
+```c id="v9qz8l"
+c = a + b;
 ```
 
 ---
 
-# 🧠 One-line clarity
+## 🔴 Assembly
 
-👉 Computer Architecture:
+```asm id="pgqj6t"
+add t0, t1, t2
+```
 
-> 👉 “Programmer க்கு தெரியும் computer behavior (language + memory + registers)”
-
----
-
-# 🔥 Ultra summary
-
-* Architecture = programmer view
-* Instruction set = language
-* Machine code = 0 & 1
-* Assembly = human readable
-* RISC-V = open architecture
-* Microarchitecture = internal design
+👉 (assuming t0=c, t1=a, t2=b)
 
 ---
 
-💬 இப்போ big picture clearஆ வந்திருக்கும் 😎
+# 🧠 4️⃣ Operands types (VERY IMPORTANT 🔥)
+
+👉 RISC-Vல 3 types:
+
+---
+
+## 🟢 (A) Registers
+
+👉 Small fast memory
+
+---
+
+### Example
+
+```asm id="hcs8x0"
+add t0, t1, t2
+```
+
+👉 எல்லாமே registers
+
+---
+
+---
+
+## 🔴 (B) Memory
+
+👉 Large storage
+
+---
+
+### Example
+
+```asm id="f7b8gs"
+lw t0, 0(t1)
+```
+
+👉 Meaning:
+
+```text id="1i3m5d"
+t0 = memory[t1 + 0]
+```
+
+---
+
+---
+
+## 🟡 (C) Constants (Immediate)
+
+👉 Fixed values
+
+---
+
+### Example
+
+```asm id="2v3y8h"
+addi t0, t1, 5
+```
+
+👉 Meaning:
+
+```text id="sl4yq1"
+t0 = t1 + 5
+```
+
+---
+
+# 🔥 5️⃣ Why Assembly important?
+
+👉 காரணம்:
+
+* CPU directly இதை execute பண்ணும்
+* Performance control ✔️
+* Low-level understanding ✔️
+
+---
+
+# 🧠 6️⃣ Example (full)
+
+---
+
+## C code
+
+```c id="7rfy4u"
+x = y + 5;
+```
+
+---
+
+## Assembly
+
+```asm id="5v9l1z"
+addi t0, t1, 5
+```
+
+---
+
+## 🧠 Meaning
+
+```text id="1q8kdc"
+t0 = t1 + 5
+```
+
+---
+
+# ⚡ 7️⃣ Another example
+
+---
+
+## C
+
+```c id="u0g6s0"
+if (a == b)
+```
+
+---
+
+## Assembly
+
+```asm id="c2r0mt"
+beq t0, t1, label
+```
+
+---
+
+👉 Meaning:
+
+```text id="q0p2kh"
+if equal → jump
+```
+
+---
+
+# 🧠 Big intuition
+
+👉 Assembly:
+
+> 👉 “CPUக்கு நேரடியாக instructions கொடுக்குற language”
+
+---
+
+# 💥 One-line clarity
+
+👉 Assembly language:
+
+> 👉 “Machine codeக்கு human-friendly representation”
+
+---
+
+# 🧠 Ultra summary
+
+* Assembly = readable machine code
+* Instruction = operation + operands
+* Operands:
+
+  * registers
+  * memory
+  * constants
+* C → assembly → machine
+
+---
+
+💬 இப்போ clearஆ புரிஞ்சுதா 😎
 
 👉 next level வேண்டுமா?
 
-* RISC-V registers full breakdown
-* அல்லது instruction format (R-type, I-type, etc.)
+* RISC-V registers (t0, a0, s0 full meaning 🔥)
+* அல்லது instruction formats (R-type, I-type)
 
-நான் Chapter 6 full master பண்ணிடுவேன் 🔥
+நான் next stepக்கு கொண்டு போகிறேன் 💥
