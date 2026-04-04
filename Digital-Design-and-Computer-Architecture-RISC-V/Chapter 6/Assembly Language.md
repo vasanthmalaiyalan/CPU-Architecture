@@ -1,280 +1,304 @@
-சூப்பர் 🔥 இப்போ **6.2 Assembly Language** — இது தான்
-👉 **C → CPU execution bridge (most important part 😎)**
+சூப்பர் 🔥 இப்போ நீ வந்துட்டே இருக்குறது **Chapter 6 — Computer Architecture INTRODUCTION**
+👉 இது தான் “low-level → real computer எப்படி வேலை செய்கிறது” bridge 💯
 
-நான் இதை **full clarity + real mapping**ல explain பண்ணுறேன் 👇
-
----
-
-# 🧠 Assembly Language — Main idea
-
-👉
-
-🔥 **CPU language (binary)க்கு human-friendly version**
+நான் இதை **simple Tamil + big-picture + முக்கிய ideas மட்டும்** clear பண்ணுறேன் 😎
 
 ---
 
-# 🎯 Definition
+# 🧠 1️⃣ Architecture என்றால் என்ன?
 
-👉
+👉 Book சொல்றது:
 
-✔️ machine language = binary (0/1)
-✔️ assembly = readable format
+> 👉 “Programmer’s view of a computer”
 
 ---
 
-## 🔹 Example
+## 🧠 Meaning (simple)
 
-### Machine language 😵
+> 👉 “Programmer க்கு தெரியும் computer interface”
 
-```text id="d6z9h0"
-00000000001100010000000010110011
+---
+
+## 💥 இதில் என்ன இருக்கும்?
+
+* Instructions (language)
+* Registers
+* Memory
+
+---
+
+👉 Example:
+
+* `add`, `sub`, `branch`
+
+---
+
+# 🔥 2️⃣ Instruction Set (முக்கிய concept)
+
+👉 Instruction set =
+
+> 👉 “Computer language”
+
+---
+
+## 🧠 Example instructions
+
+```asm
+add t0, t1, t2
+sub t0, t1, t2
+beq t0, t1, label
 ```
 
 ---
 
-### Assembly 😎
+👉 Tamil:
 
-```asm id="d7a8b1"
-add x1, x2, x3
+> 👉 “CPU புரியும் commands”
+
+---
+
+# 💻 3️⃣ Programs எப்படி run ஆகுது?
+
+👉 Book சொல்றது:
+
+> 👉 “All software → simple instructions ஆக convert ஆகும்”
+
+---
+
+## 🔁 Flow
+
+```text
+C program
+↓
+Compiler
+↓
+Assembly
+↓
+Machine code (0 & 1)
+↓
+CPU execute
 ```
 
 ---
 
-👉
+# 🔢 4️⃣ Machine Language
 
-🔥 இரண்டும் same instruction தான்
+👉 CPU understand பண்ணுவது:
 
----
-
-# 🧠 Assembly instruction structure
-
-👉
-
-🔥 ஒவ்வொரு instruction:
-
-```text id="w6o2nx"
-operation + operands
+```text
+0 மற்றும் 1 மட்டும்
 ```
 
 ---
 
-## 🔹 Example
+## 🔥 Example
 
-```asm id="i2q4mz"
-add x1, x2, x3
+```text
+00000000001000000000000010110011
+```
+
+👉 இது தான் real instruction 😳
+
+---
+
+# 🧠 5️⃣ Assembly Language
+
+👉 Human-friendly version:
+
+```asm
+add t0, t1, t2
 ```
 
 ---
 
-## 🔍 Meaning
+👉 Tamil:
 
-```text id="v5c3ds"
-x1 = x2 + x3
-```
+> 👉 “machine codeக்கு readable form”
 
 ---
 
-# 🧠 Operand types (VERY IMPORTANT 🔥)
+# ⚙️ 6️⃣ Architecture vs Hardware
 
-👉 3 types:
-
----
-
-## 🔹 1. Registers
-
-👉
-
-🔥 CPU உள்ளே இருக்கும் small memory
+👉 Very important 🔥
 
 ---
 
-## 🔹 Example
+## 🟢 Architecture
 
-```asm id="g3f0hp"
-add x1, x2, x3
-```
-
-👉
-
-✔️ x1, x2, x3 → registers
+> 👉 “WHAT computer does”
 
 ---
 
----
+## 🔴 Microarchitecture
 
-## 🔹 2. Memory
-
-👉
-
-🔥 RAM (big memory)
+> 👉 “HOW it does”
 
 ---
 
-## 🔹 Example
+## 🧠 Example
 
-```asm id="v4e6ra"
-lw x1, 0(x2)
-```
+👉 x86:
 
-👉
+* Intel CPU
+* AMD CPU
 
-✔️ memoryல இருந்து load
-
----
+👉 இரண்டும் same programs run பண்ணும் ✔️
 
 ---
 
-## 🔹 3. Constants (Immediate)
+# 💥 7️⃣ Different Architectures
 
-👉
+👉 Book சொல்றது:
 
-🔥 fixed values
-
----
-
-## 🔹 Example
-
-```asm id="w3y7ta"
-addi x1, x2, 5
-```
-
-👉
-
-✔️ 5 → constant
-
----
-
-# 🧠 C vs Assembly (IMPORTANT 🔥)
-
----
-
-## 🔹 C code
-
-```c id="f9x3te"
-int x = a + b;
-```
-
----
-
-## 🔹 Assembly
-
-```asm id="y7n2lo"
-add x1, x2, x3
-```
-
----
-
-👉
-
-🔥 C → multiple assembly instructions ஆகும்
-
----
-
-# 🧠 Why Assembly important?
-
-👉
-
-🔥
-
-✔️ CPU எப்படி வேலை செய்கிறது புரியும்
-✔️ performance tuning
-✔️ exploit development
-
----
-
-# 🧠 Real execution flow
-
-```text id="h1r3zk"
-C → Compiler → Assembly → Machine code → CPU
-```
-
----
-
-# 🧠 Important note
-
-👉
-
-🔥
-
-👉 Assembly ≠ universal
-
----
-
-## 🔹 Different architectures
-
-👉
-
-* x86
-* ARM
 * RISC-V
-
-👉
-
-🔥 syntax change ஆகும்
-
----
-
-# 🧠 But concept same
-
-👉
-
-✔️ add
-✔️ sub
-✔️ load
-✔️ store
+* ARM
+* x86
+* MIPS
+* SPARC
 
 ---
 
-# 🧠 Key understanding
+👉 Tamil:
 
-👉
-
-🔥
-
-**Assembly = CPUக்கு closest human language**
+> 👉 “different dialects (language styles)”
 
 ---
 
-# 🎯 Final clarity
-
-👉
-
-🔥
-**Assembly = readable machine instructions**
+# 🚀 8️⃣ RISC-V (நம்ம focus)
 
 ---
 
-# 🧠 One-line summary
+## 🧠 What is special?
 
-👉
-**operation + operands = assembly instruction**
+👉 Open-source 🔥
 
----
-
-# 🚀 உனக்கு முக்கியம் (🔥)
-
-👉
-
-👉 C code எழுதும்போது:
-
-👉
-
-🔥 “இதுக்கு assembly என்ன?”ன்னு நினைச்சா
-
-👉
-
-🔥 mastery level 😎
+👉 Free to use
 
 ---
 
-நீ இப்போ **C → CPU bridge புரிஞ்சிட்டே 🔥**
+## 👨‍🔬 Created by
+
+* Krste Asanović
+* David Patterson
+* Andrew Waterman
 
 ---
 
-👉 next:
+## 🏫 Origin
 
-👉 **Registers deep (x0–x31 என்ன?)**
+👉 University of California, Berkeley
 
 ---
 
-சொல்லு: **"register deep"** 🚀
+# 💥 9️⃣ Why RISC-V important?
+
+👉 Compare:
+
+| Type   | Example  |
+| ------ | -------- |
+| Closed | ARM, x86 |
+| Open   | RISC-V   |
+
+---
+
+👉 RISC-V:
+
+> 👉 “free + flexible + modern”
+
+---
+
+# 🧠 10️⃣ Instruction format
+
+👉 RISC-V:
+
+```text
+32-bit instruction
+```
+
+---
+
+# 🔥 11️⃣ What you will learn next
+
+👉 Book சொல்றது:
+
+* Assembly instructions
+* Registers
+* Memory usage
+* Branches & loops
+* Function calls
+
+---
+
+# 🧠 12️⃣ 4 Design Principles (VERY IMPORTANT 🔥)
+
+👉 By David Patterson & John Hennessy
+
+---
+
+## 🟢 1. Regularity → simplicity
+
+> 👉 simple pattern = easy design
+
+---
+
+## 🟡 2. Make common case fast
+
+> 👉 frequently used operations → fast
+
+---
+
+## 🔵 3. Smaller is faster
+
+> 👉 less complexity → more speed
+
+---
+
+## 🔴 4. Good design = compromise
+
+> 👉 speed vs cost vs power balance
+
+---
+
+# 💥 Big Picture (FINAL)
+
+👉 Architecture:
+
+```text
+Language + Registers + Memory
+```
+
+👉 CPU:
+
+```text
+instructions execute பண்ணும் machine
+```
+
+---
+
+# 🧠 One-line clarity
+
+👉 Computer Architecture:
+
+> 👉 “Programmer க்கு தெரியும் computer behavior (language + memory + registers)”
+
+---
+
+# 🔥 Ultra summary
+
+* Architecture = programmer view
+* Instruction set = language
+* Machine code = 0 & 1
+* Assembly = human readable
+* RISC-V = open architecture
+* Microarchitecture = internal design
+
+---
+
+💬 இப்போ big picture clearஆ வந்திருக்கும் 😎
+
+👉 next level வேண்டுமா?
+
+* RISC-V registers full breakdown
+* அல்லது instruction format (R-type, I-type, etc.)
+
+நான் Chapter 6 full master பண்ணிடுவேன் 🔥
