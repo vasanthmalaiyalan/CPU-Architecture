@@ -279,3 +279,242 @@ andi x, a, 0xFF
 * அல்லது real-world example (permissions, flags)
 
 நான் இன்னும் clarity கொண்டு போகலாம் 💥
+
+-----------
+
+சூப்பர் 🔥 நீ கேட்டது perfect 👍
+👉 இப்போ நான் **and / or / xor / xori (NOT)** எல்லாத்தையும் **full assembly code + comments + output explanation**ல காட்டுறேன் 💯
+
+---
+
+# 🟢 1️⃣ AND (masking example)
+
+```asm
+.section .text
+.globl _start
+
+_start:
+    li s1, 0xFFFF0000   # s1 = 11111111 11111111 00000000 00000000
+    li s2, 0x46A1FFFF   # mask value
+
+    and s3, s1, s2      # s3 = s1 & s2
+
+    mv a0, s3           # result → exit code
+    li a7, 93
+    ecall
+```
+
+---
+
+## 🧠 Result
+
+👉 AND effect:
+
+```text
+s1 = FFFF0000
+s2 = 46A1FFFF
+----------------
+s3 = 46A10000
+```
+
+👉 **bottom bits clear ஆகும்** ✔️
+
+---
+
+# 🔵 2️⃣ OR (set bits example)
+
+```asm
+.section .text
+.globl _start
+
+_start:
+    li s1, 0x347A0000
+    li s2, 0x000072FC
+
+    or s3, s1, s2       # combine
+
+    mv a0, s3
+    li a7, 93
+    ecall
+```
+
+---
+
+## 🧠 Result
+
+```text
+347A0000
+OR 000072FC
+-----------
+347A72FC ✔️
+```
+
+👉 bits add ஆகும்
+
+---
+
+# 🔴 3️⃣ XOR (difference example)
+
+```asm
+.section .text
+.globl _start
+
+_start:
+    li s1, 0b1010
+    li s2, 0b1100
+
+    xor s3, s1, s2      # compare bits
+
+    mv a0, s3
+    li a7, 93
+    ecall
+```
+
+---
+
+## 🧠 Result
+
+```text
+1010
+1100
+----
+0110 ✔️
+```
+
+👉 different bits மட்டும் 1
+
+---
+
+# 🔥 4️⃣ NOT using XORI
+
+```asm
+.section .text
+.globl _start
+
+_start:
+    li s1, 0x0F0F0F0F
+
+    xori s2, s1, -1     # NOT operation
+
+    mv a0, s2
+    li a7, 93
+    ecall
+```
+
+---
+
+## 🧠 Why works?
+
+👉 -1 =
+
+```text
+0xFFFFFFFF
+```
+
+👉 XOR:
+
+```text
+flip all bits
+```
+
+---
+
+## 🔢 Result
+
+```text
+0F0F0F0F
+→ F0F0F0F0 ✔️
+```
+
+---
+
+# 🟡 5️⃣ ANDI (clear specific bit)
+
+```asm
+.section .text
+.globl _start
+
+_start:
+    li s0, 0xFF        # 11111111
+
+    andi s1, s0, 0xF7  # clear bit 3
+
+    mv a0, s1
+    li a7, 93
+    ecall
+```
+
+---
+
+## 🧠 Result
+
+```text
+11111111
+AND 11110111
+------------
+11110111 ✔️
+```
+
+👉 bit 3 clear
+
+---
+
+# 🔵 6️⃣ ORI (set specific bit)
+
+```asm
+.section .text
+.globl _start
+
+_start:
+    li s0, 0x00
+
+    ori s1, s0, 0x20   # set bit 5
+
+    mv a0, s1
+    li a7, 93
+    ecall
+```
+
+---
+
+## 🧠 Result
+
+```text
+00000000
+OR 00100000
+-----------
+00100000 ✔️
+```
+
+---
+
+# 💥 Final Big Insight
+
+| Instruction | வேலை       |
+| ----------- | ---------- |
+| AND         | bits clear |
+| OR          | bits set   |
+| XOR         | toggle     |
+| XORI -1     | NOT        |
+
+---
+
+# 🧠 One-line clarity
+
+👉 Logical instructions:
+
+> 👉 “register bits-ஐ control பண்ணும் tools”
+
+---
+
+💬 இப்போ இது புரிஞ்சா 🔥
+👉 bit manipulation strong ஆகிடுச்சு 😎
+
+---
+
+👉 next level வேண்டுமா?
+
+* shift instructions full (sll, srl, sra 🔥)
+* அல்லது real-world bit hacks
+
+நான் இன்னும் deeper போகலாம் 💥
