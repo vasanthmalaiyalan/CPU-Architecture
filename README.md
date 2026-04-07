@@ -1,3 +1,13 @@
+git : `git config --global alias.g '!f() { 
+  git add .; 
+  files=$(git diff --cached --name-only | while read f; do basename "$f"; done | tr "\n" ", "); 
+  msg=${1:-"${files%, }"}; 
+  git commit -m "$msg" || true; 
+  git push; 
+}; f'`
+
+and `git g`
+
 சூப்பர் கேள்வி 🔥 — “low-level programmer” என்றால் **எவ்வளவு CPU உள்ளே தெரிஞ்சிருக்கணும்?** இதை straight-ஆ breakdown பண்ணுறேன்.
 
 ---
