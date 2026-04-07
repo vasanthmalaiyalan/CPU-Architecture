@@ -280,3 +280,4 @@ logic gates உருவாக்கும் math foundation 🔥**
 
 🔥 Ready next? 😎
 👉 “NAND கொண்டு NOT, AND, OR எப்படி build பண்ணுறது (step-by-step proof)” 🚀
+-
